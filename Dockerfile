@@ -1,5 +1,5 @@
 FROM alpine
-MAINTAINER Sébastien LECACHEUR "slecache@gmail.com"
+MAINTAINER Tobias Kaefer <tobias+apcnsldckr@tkaefer.de>
 
 #
 # install Node & Git
@@ -37,12 +37,6 @@ RUN npm install \
         && bower install --production --allow-root \
         && npm cache clean \
         && bower cache clean --allow-root
-
-#
-# add customs files for the API
-#
-RUN sed -i 's/<raml-initializer><\/raml-initializer>/<raml-console-loader src="apis\/main.raml" resources-collapsed><\/raml-console-loader>/g' /data/dist/index.html
-ONBUILD ADD . /data/dist/apis/
 
 EXPOSE 9000
 EXPOSE 35729

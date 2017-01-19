@@ -20,8 +20,7 @@ WORKDIR /data
 #
 # download the specified (API_CONSOLE_VERSION) version of RAML api:Console
 #
-ENV API_CONSOLE_VERSION v3.0.10
-RUN git clone --depth 1 --branch $API_CONSOLE_VERSION https://github.com/mulesoft/api-console.git /data \
+RUN git clone https://github.com/mulesoft/api-console.git /data \
         && mkdir /data/dist/apis \
         && mv /data/dist/examples/simple.raml /data/dist/apis/main.raml \
         && rm -rf /data/dist/examples \
